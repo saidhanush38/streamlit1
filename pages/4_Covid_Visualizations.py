@@ -16,6 +16,9 @@ df = pd.read_csv(DATA_PATH)
 st.title("Dashboard - Covid Data")
 State = st.selectbox("Select the state:", df['State'].unique())
 
+df1 = pd.DataFrame(df,columns=['LATITUDE','LONGITUDE'])
+st.map(df1)
+
 col1, col2 = st.columns(2)
 
 fig_1 = px.histogram(df[df['State'] == State], x="Total Confirmed cases")
@@ -23,6 +26,3 @@ col1.plotly_chart(fig_1, use_container_width=True)
 
 fig_2 = px.box(df[df['State'] == State], y="Death")
 col2.plotly_chart(fig_2, use_container_width=True)
-
-df1 = pd.DataFrame(df,columns=['LATITUDE','LONGITUDE'])
-st.map(df1)
