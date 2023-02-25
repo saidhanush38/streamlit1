@@ -13,10 +13,12 @@ dir_of_interest = os.path.join(PARENT_DIR, "resources")
 DATA_PATH = os.path.join(dir_of_interest, "data", "covid11.csv")
 df = pd.read_csv(DATA_PATH)
 
+st.title("Dashboard - Covid Data")
+
 df1 = pd.DataFrame(df,columns=['LATITUDE','LONGITUDE'])
 st.map(df1)
 
-st.title("Dashboard - Covid Data")
+
 State = st.selectbox("Select the state:", df['State'].unique())
 
 col1, col2 = st.columns(2)
